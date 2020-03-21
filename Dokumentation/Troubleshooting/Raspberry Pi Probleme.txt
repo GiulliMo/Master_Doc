@@ -1,0 +1,2 @@
+Raspy nicht mehr erreichbar oder fährt nicht hoch etc.:
+1)	-neues Image File drauf. Ist hinterlegt auf dem Alf rechner oder unter dem Link: https://github.com/mathworks/Raspbian_OS_Setup/releases/tag/R18.1.0
