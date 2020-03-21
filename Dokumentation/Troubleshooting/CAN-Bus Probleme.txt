@@ -1,0 +1,12 @@
+CAN Sicherheits-SPS obere LED leuchtet durchgehend rot:
+
+1)	-Alf herunterfahren
+	-einen Controller abstecken
+	-Alf hochfahren
+	-wenn hochgefahren Controller anstecken
+oder
+2)	-niemals einen neuen Treiber installieren
+	-wenn doch, Terminal öffnen
+	-cd in heruntergaldene Directory meist /peak-linux-driver-x.x.x
+	-sudo make uninstall
+	-sudo reboot
