@@ -1,0 +1,4 @@
+-MecanumPose:	CAN-treiber für Windows verfügbar dh für Simulink Vehicle Network Toolbox jedoch nicht für Linux. Abhilfe evtl den Dongle am Linux Rechner laufen lassen und so das CAN Netzwerk sniffen.
+-RTAB Map:
+-Global Map?:
+-Orten Koordinaten zuweisen:
