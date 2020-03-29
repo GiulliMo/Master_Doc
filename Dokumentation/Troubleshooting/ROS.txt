@@ -1,0 +1,2 @@
+AMCL process died:
+	AMCL über catkin installiert? Dann ist die ausführbare Datei kaputt. Abhilfe: entweder navigation stack vollständig über apt-get installieren d.h. auf dem catkin deinstallieren (achtung nachprüfen) oder nur amcl aus dem stack deinstallieren bzw. löschen und es dann aus dem stack des basisverzeichnis aufrufen (geschieht automatisch sobald amcl aus dem catkin gelöscht wurde)
