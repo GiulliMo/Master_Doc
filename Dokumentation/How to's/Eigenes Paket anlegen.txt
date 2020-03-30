@@ -1,0 +1,6 @@
+1) in catkin_ws/src reingehen
+2) "catkin_create_pkg [Paketname] std_msgs rospy roscpp" eingeben
+3) in catkin_ws zurück
+4) "catkin_make" eingeben
+5) wenn kein code hinterlegt war, in catkin_ws/devel/lib wechseln und einen Ordner namens [Paketname] erstellen
+6) source catkin_ws/.. nicht vergessen
