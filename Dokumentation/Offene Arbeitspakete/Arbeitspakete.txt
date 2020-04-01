@@ -13,3 +13,7 @@ probieren
 
 My URDF:
 CAD?
+
+Zustandsautomat:
+Parameter
+Zuständet etc
