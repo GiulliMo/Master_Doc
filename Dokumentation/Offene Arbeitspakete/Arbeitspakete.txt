@@ -2,7 +2,7 @@
 -RTAB Map:
 -Global Map?:
 -Orten Koordinaten zuweisen:
-
+-CAN-Bus datei testen und wenn fertig in bootup datei schreiben und source befehle mitnehmen
 
 Datenfusion EKF:
 Gitten

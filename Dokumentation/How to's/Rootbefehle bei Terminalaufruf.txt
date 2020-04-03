@@ -1,5 +1,5 @@
 1) "sudo visudo" eingeben
 2) in die unterste zeile "alf ALL=(ALL:ALL) NOPASSWD: ALL" eingeben und abspeichern. So können Sudo Befehle ohne PW ausgeführt werden jedoch benötigt man trotzdem ein sudo.
 3) "gedit .bashrc" in terminal eingeben. Diese Datei ist dafür zuständig Befehle bei Terminalstart auszuführen. in die unterste Zeile können befehle einfach eingegeben werden. danach abspeichern.
-4) Bei dem Befehl "echo 64 > /sys/module/usbcore/parameters/usbfs_memory_mb"  (Troubleshooting multiple Kinects) muss die entsprechende datei noch Schreibrechte bekommen.
+4) Bei dem Befehl "echo 64 > /sys/module/usbcore/parameters/usbfs_memory_mb"  (Troubleshooting multiple Kinects) muss die entsprechende Datei noch Schreibrechte bekommen.
 5) Dazu in den Ordner "....../parameters/" und "sudo chmod -v a+w usbfs_memory_mb"
