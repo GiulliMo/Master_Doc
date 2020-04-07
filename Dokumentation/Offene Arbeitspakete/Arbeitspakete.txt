@@ -16,4 +16,19 @@ CAD?
 
 Zustandsautomat:
 Parameter
-Zuständet etc
+Zustände etc
+S-Function Maske
+
+
+Lokalisierung/Mapping
+
+Spezifische Orte in Karte eintragen
+
+
+Spracherkennung durch neuroyale Netze
+
+
+
+
+
+
