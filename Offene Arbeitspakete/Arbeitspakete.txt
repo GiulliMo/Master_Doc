@@ -1,34 +1,34 @@
--MecanumPose:	CAN-treiber für Windows verfügbar dh für Simulink Vehicle Network Toolbox jedoch nicht für Linux. Abhilfe evtl den Dongle am Linux Rechner laufen lassen und so das CAN Netzwerk sniffen.
--RTAB Map:
--Global Map?:
--Orten Koordinaten zuweisen:
--CAN-Bus datei testen und wenn fertig in bootup datei schreiben und source befehle mitnehmen
-
 Datenfusion EKF:
-Gitten
-Doku was passiert
-was wird publusht
-NaN abfangen
-probieren
-
-My URDF:
-CAD?
+-Doku was passiert
+-was wird in ROS veröffentlicht
+-NaN abfangen
+-probieren
+-Offset?
 
 Zustandsautomat:
-Parameter
-Zustände etc
-S-Function Maske
+-Parameter
+-Zustände etc
+-S-Function Maske
+-PAP machen
+- V&V
+- Zustandswechsel
+
+Lokalisierung/Mapping:
+-Spezifische Orte in Karte eintragen ==> Logistikszenario
+-EKF Daten für Zustand nutzen (einfaches Fahren)
 
 
-Lokalisierung/Mapping
-
-Spezifische Orte in Karte eintragen
-
-
-Spracherkennung durch neuroyale Netze
+Spracherkennung durch neuroyale Netze:
+-Sprachausgabe ROS
+-Trainiertes Netz nutzen in Simulink einbinden
 
 
-Lastenheft
+Projektmanagement:
+-Lastenheft formulieren
+-Anwendungsszenarien präzisieren
+-Projektauftrag finalisieren, Krimpmann/Smart mit ins Boot
+-Meilensteiplan
+-Consens
 
 
 
