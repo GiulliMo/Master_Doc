@@ -16,11 +16,14 @@ Zustandsautomat:
 Lokalisierung/Mapping:
 -Spezifische Orte in Karte eintragen ==> Logistikszenario
 -EKF Daten für Zustand nutzen (einfaches Fahren)
+-Map optimieren
+-Heatmap für Gefahrenzonen
 
 
 Spracherkennung durch neuroyale Netze:
 -Sprachausgabe ROS
 -Trainiertes Netz nutzen in Simulink einbinden
+-Deutsche Eingabe
 
 
 Projektmanagement:
@@ -31,4 +34,5 @@ Projektmanagement:
 -Consens
 
 
-
+GUI/Statusmeldung:
+Diagnose
