@@ -4,3 +4,4 @@
 -Partikelfilter und Lokalisierung
 -Mecanumpose mit Fehlerrechnung
 -Zustandsautomat
+-sicherer Zustand
