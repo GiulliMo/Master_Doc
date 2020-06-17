@@ -1,0 +1,356 @@
+%	Autor:		Giuliano Montorio & Hannes Dittmann
+%	Datum:		28.08.2018
+%	Short:		Entwicklungsprojekt
+% DOCUMENTCLASS -----------------------------------------------------------------------------------------
+\documentclass[12pt,a4paper,oneside,numbers=noenddot,captions=tableheading,toc=bibliography,openany,tikz,margin=5mm]{scrbook}
+\setcounter{secnumdepth}{5}
+\renewcommand{\arraystretch}{1.4} 
+
+\usepackage[scaled=.90]{helvet}
+\usepackage{geometry}
+\geometry{a4paper,left=25mm,right=25mm, top=25mm, bottom=25mm, includeheadfoot}
+
+
+% SPRACHE------------------------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[autostyle,babel,german=guillemets,style=german]{csquotes}
+\usepackage[USenglish,ngerman]{babel} 
+\selectlanguage{ngerman}
+
+
+% TABELLEN-----------------------------------------------------------------------------------------------
+\usepackage{multirow} % Tabellen-Zellen �ber mehrere Zeilen1
+\usepackage{multicol} % mehre Spalten auf eine Seite
+\usepackage{tabularx} % F�r Tabellen mit vorgegeben Gr��en
+\usepackage{array}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable} % Tabellen �ber mehrere Seiten
+\usepackage{rotating}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{circuits.ee.IEC}
+\usepackage{pgfplots}
+\pgfplotsset{
+	dirac/.style={
+		mark=triangle*,
+		mark options={scale=2},
+		ycomb,
+		scatter,
+		visualization depends on={y/abs(y)-1 \as \sign},
+		scatter/@pre marker code/.code={\scope[rotate=90*\sign,yshift=-2pt]}
+	}
+}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{pdflscape}
+
+% BILDER-------------------------------------------------------------------------------------------------
+\usepackage{graphicx}
+
+\usepackage{color}
+\usepackage{svg}
+
+
+
+% ALLGEMEINES--------------------------------------------------------------------------------------------
+\usepackage{amsmath,amssymb} % Mathesachen
+\usepackage[T1]{fontenc} % Ligaturen, richtige Umlaute im PDF
+\usepackage[hyphens,obeyspaces,spaces]{url}		% bricht lange URLs ?sch�n? um
+\usepackage[decimalsymbol=comma]{siunitx}
+\usepackage[onehalfspacing]{setspace}
+\setlength{\parindent}{0cm}	% Disable automatic parindent
+\usepackage{placeins}
+\sloppy
+\usepackage{mathrsfs}
+\usepackage{pdfpages}
+\usepackage{enumitem}
+\graphicspath{{_img/}}
+% PDF-----------------------------------------------------------------------------------------------------
+\usepackage{pdfpages}
+\usepackage[ngerman,%
+pdfauthor={Giuliano Montorio und Hannes Dittmann},%
+pdftitle={Bachelorarbeit Dittmann Montorio},%
+colorlinks=true,linkcolor=black,citecolor=black,filecolor=black,urlcolor=black%
+]{hyperref}
+
+% ABKÜRZUNGEN --------------------------------------------------------------------------------------------
+\usepackage[nohyperlinks]{acronym}
+
+
+% BIBLATEX -----------------------------------------------------------------------------------------------
+\usepackage[backend=bibtex,%
+style=IEEEtran,%
+bibstyle=numeric,%
+citestyle=numeric,%
+sorting=none,%
+]{biblatex}
+\bibliography{_bib/biblio}
+
+% QUELLCODE -------------------------------------------------------------------
+\usepackage{listings}
+\definecolor{mygreen}{RGB}{28,172,0} 		% color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\lstset{language=Matlab,%
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,%
+	morekeywords={matlab2tikz},
+	keywordstyle=\color{blue},%
+	morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+	identifierstyle=\color{black},%
+	stringstyle=\color{mylilas},
+	commentstyle=\color{mygreen},%
+	showstringspaces=false,%without this there will be a symbol in the places where there is a space
+	numbers=left,%
+	numberstyle={\tiny \color{black}},% size of the numbers
+	numbersep=9pt, % this defines how far the numbers are from the text
+	emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+	%emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}		
+% DOCUMENT ------------------------------------------------------------------------------------------------
+\begin{document}
+	\begin{longtable}{|p{1,5cm}|p{3,5cm}|p{7cm}|p{2,2cm}|} 
+	\hline
+	\textbf{Nr./ID} & \textbf{Titel} & \textbf{Verifikation der Anforderung} & \textbf{Hilfsmittel}\\
+	\endhead
+	\hline
+	ANF\_01 & Posenwinkelbe- \newline stimmung des ALF, durch die vorhandene IMU Sensorik & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		
+		
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (Manuelles Fahren)
+		\item[3.]	Resetknopf betätigen
+		\item[4.]	Manuelle Fahraufgaben mit hilfe des Joysticks durchführen
+		\item[5.]	Aktuelle Posenwineklschätzung durch IMU-Sensorik aus dem \textit{ROS}-Netzwerk abbonieren
+		\item[6.]	Posenwinkelschätzung des verwendeten SLAM-Algorithmus aus dem \textit{ROS}-Netzwerk abbonieren
+		\item[7.]	Vergleich der Posenwinkelschätzungen im Simulation Data Inspector
+
+		
+	\end{itemize}
+	\textbf{}%hier kommt bestanden oder so rein
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}%hier kommt bestanden oder so rein
+	&\textit{ROS}\newline
+	\textit{Simulink}\
+	Joystick\\ 
+	\hline
+	ANF\_02 & Kartographierung der Umgebung mit Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		
+		
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (\textit{SLAM})
+		\item[3.]	Resetknopf betätigen
+		\item[4.]	Bewegungsvorgabe durch den Benutzer mithilfe des Joysticks oder einer Zielvorgabe in \textit{Rviz}.
+		\item[5.]	Am Joystick die Tasten \glqq left trigger\grqq{} und \glqq right trigger\grqq{} drücken
+		
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+   \newline
+	
+	\textbf{}%hier kommt bestanden oder so rein
+	
+	& \textit{Rviz \newline Joystick}\\
+	\hline
+	ANF\_03 & Kartographieren der Umgebung ohne Bewegungsvorgabe durch den Benutzer& Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		
+		
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (\textit{SLAM + Explore lite})
+		\item[3.]	Resetknopf drücken
+		\item[4.]	Am Joystick die Tasten \glqq left trigger\grqq{} und \glqq right trigger\grqq{} drücken
+		
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}%hier kommt bestanden oder so rein
+	
+	& \textit{Rviz \newline Joystick}\\
+	\hline
+	ANF\_04 & Erhöhung der Stufe für autonomes Fahren & Während der Ausführung der Anwendungsszenarien 2,3 und 5 müssen die Kriterien des BASt \textit{Fahraufgaben des Fahres nach Automatisierungsgrad} für das Level 4 erfüllt werden. \newline
+	
+	\underline{Ergebnis:}\newline
+	
+	\textbf{} %hier kommt bestanden oder so rein
+	& 	Checkliste für Kriterien
+	\\
+	\hline
+	ANF\_05 & Posenschätzung in vorhandener statischer Karte & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		
+		
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (Lokalisierung)
+		\item[3.]	Bezugspunkt in der Umgebung festlegen
+		\item[4.]	Bezugspunkt in statischer Karte in \textit{Rviz} eintragen (z.B. als \textit{Simple Goal})
+		\item[5.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen
+		\item[6.]	Transformation zwischen Bezugspunkt und Posenschätzung bestimmen
+		\item[7.]	Messung mit vorgeschriebenen Messmittel
+		\item[8.]	Vergleich der Transformation mit dem gemessenen Werten
+		
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}%hier kommt bestanden rein
+	& \textit{Rviz}\newline
+	Bandmaß\newline
+	Kompass
+	\\
+	\hline
+	ANF\_06 & Anfahren einer vom benutzer vorgegebenen Zielpose & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+		\begin{itemize}
+			
+			
+			\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+			\item[2.]	Launch-File starten (Lokalisierung oder SLAM)
+			\item[3.]	Resetknopf betätigen
+			\item[4.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen
+			\item[5.]	Aufforderung des Roboterszur Übernahme der Fahraufgabe
+			\item[6.]	Quittierung durch Benutzer
+			\item[7.]	Vollautomatisiertes durchführen der Fahraufgabe
+			\item[8.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
+			\item[9.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
+			
+		\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}\textbf{}	%hier kommt bestanden oder so rein
+	& \textit{Rviz}\newline
+	\textit{Matlab}\newline
+	\\
+	\hline
+	
+	ANF\_07 & Erkennung von Sprache des Benutzers & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (SpeechRecognition) und Mikrofon auswählen
+		\item[3.]	Vorgegebene Zeit in das Mikrofon sprechen
+		\item[4.]	Abonnieren der Veröffentlichten \textit{ROS-Topic}
+		\item[5.]	Vergleich der Transkription mit Spracheingabe
+				
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}	%hier kommt bestanden oder so rein
+	& \textit{ROS}\newline
+	\textit{Kinect-Mikrofon}\newline
+	\\
+	\hline
+	
+	ANF\_08 & Erkennung von Personen in Reichweite der verwendeten Sensorik & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		
+		
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (People2Pose)
+		\item[3.]	Der Benutzer stellt sich in das Sichtfeld einer Kamera
+		\item[4.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel
+		\item[5.]	Abonnieren der Veröffentlichten \textit{ROS-Topic} 
+		\item[6.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Roboterzentrum
+
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}	%hier kommt bestanden oder so rein
+	& \textit{ROS}\newline
+	Bandmaß\newline
+	\textit{Kinect-Kameras}
+	\\
+	\hline
+	
+	ANF\_09 & Tracking von erkannten Personen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (People2Pose)
+		\item[3.]	Der Benutzer bewegt sich im Sichtfeld einer Kamera
+		\item[4.]Abonnieren der Veröffentlichten \textit{ROS-Topic} , welche die Transkription beinhaltet 
+		\item[5.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel
+		\item[6.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Roboterzentrum
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}%bestanden?
+	& \textit{ROS}\newline
+	Bandmaß\newline
+	\textit{Kinect-Kameras}
+	\\
+	\hline
+	
+		ANF\_10 & Sprachausgabe an Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (??)
+		\item[3.]	Eingabe der geforderten Ausgabe, z.B. als String
+		\item[4.]	Zuhören und sicherstellen das die Lautsprecher eingeschaltet sind
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}%bestanden?
+	& \textit{ROS}\newline
+	Lautsprecher
+	\\
+	\hline
+	
+	ANF\_11 & Bedienung durch Sprachbefehle & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (SpeechRecognition)
+		\item[3.]	Der Benutzer spricht einen Roboter-Spezifische Wortgruppe in das Mikrofon der Kinect-Kamera 
+		\item[4.]	Quittieren einer Handlungsableitung
+		\item[5.]	Der Roboter führt die spezifische Handlung aus
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	
+	\textbf{}%bestanden?
+	& \textit{ROS}\newline
+	\newline
+	\textit{Kinect-Mikrofon}
+	\textit{Matlab}
+	\\
+	\hline
+	
+	ANF\_12 & Automes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Launch-File starten (Lokalisierung)
+		\item[3.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
+		\item[4.]	Aufforderung des Roboterszur Übernahme der Fahraufgabe
+		\item[5.]	Quittierung durch Benutzer
+		\item[6.]	Vollautomatisiertes durchführen der Fahraufgabe
+		\item[7.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
+		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	\textbf{}%bestanden?
+	& \textit{ROS}\newline
+	Bandmaß\newline
+	\textit{Kinect-Kameras}
+	\\
+	\hline
+\end{longtable} 
+\end{document}
