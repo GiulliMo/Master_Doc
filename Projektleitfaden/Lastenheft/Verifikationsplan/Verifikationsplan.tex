@@ -114,7 +114,7 @@ sorting=none,%
 	\textbf{Nr./ID} & \textbf{Titel} & \textbf{Verifikation der Anforderung} & \textbf{Hilfsmittel}\\
 	\endhead
 	\hline
-	ANF\_01 & Posenwinkelbe- \newline stimmung des ALF, durch die vorhandene IMU Sensorik & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_01 & Posenwinkelbe- \newline stimmung des ALF & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		
 		
@@ -122,9 +122,9 @@ sorting=none,%
 		\item[2.]	Launch-File starten (Manuelles Fahren)
 		\item[3.]	Resetknopf betätigen
 		\item[4.]	Manuelle Fahraufgaben mithilfe des Joysticks durchführen
-		\item[5.]	Aktuelle Posenwineklschätzung durch IMU-Sensorik aus dem \textit{ROS}-Netzwerk abonieren
-		\item[6.]	Posenwinkelschätzung des verwendeten SLAM-Algorithmus aus dem \textit{ROS}-Netzwerk abonieren
-		\item[7.]	Vergleich der Posenwinkelschätzungen im Simulation Data Inspector
+		\item[5.]	Aktuelle Posenwineklschätzung durch IMU-Sensorik aus dem \textit{ROS}-Netzwerk abonnieren
+		\item[6.]	Posenwinkelschätzung des verwendeten SLAM-Algorithmus aus dem \textit{ROS}-Netzwerk abonnieren
+		\item[7.]	Vergleich der Posenwinkelschätzungen mit dem Winkel aus Schritt 6 im Simulation Data Inspector
 
 		
 	\end{itemize}
@@ -147,7 +147,12 @@ sorting=none,%
 		\item[3.]	Resetknopf betätigen
 		\item[4.]	Bewegungsvorgabe durch den Benutzer mithilfe des Joysticks oder einer Zielvorgabe in \textit{Rviz}.
 		\item[5.]	Am Joystick die Tasten \glqq left trigger\grqq{} und \glqq right trigger\grqq{} drücken
-		\item[6.]	Vergleich mit Lageplan des D3-Gebäudes
+		\item[6.]	Auswahl eines Referenzobjekts.
+		\item[7.]	Bestimmung der Maße des Referenzobjekts.
+		\item[8.]	Referenzobjekt in aufgenommener statischer Karte finden und Maße unter Einbeziehung des Kartenmaßstabs und der Auflösung bestimmen.
+		\item[9.]	Vergleich der in den vorherigen Schritten bestimmten Maße.
+		
+		
 		
 	\end{itemize}
 	
@@ -165,8 +170,11 @@ sorting=none,%
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Launch-File starten (\textit{SLAM + Explore lite})
 		\item[3.]	Resetknopf drücken
-		\item[4.]	Am Joystick die Tasten \glqq left trigger\grqq{} und \glqq right trigger\grqq{} drücken
-		\item[5.]	Vergleich mit Lageplan des D3-Gebäudes
+		\item[4.]	Auswahl eines Referenzobjekts.
+		\item[5.]	Bestimmung der Maße des Referenzobjekts.
+		\item[6.]	Referenzobjekt in aufgenommener statischer Karte finden und Maße unter Einbeziehung des Kartenmaßstabs und der Auflösung bestimmen.
+		\item[7.]	Vergleich der in den vorherigen Schritten bestimmten Maße.
+
 		
 	\end{itemize}
 	
@@ -177,12 +185,12 @@ sorting=none,%
 	
 	& \textit{Rviz \newline Joystick}\\
 	\hline
-	ANF\_04 & Erhöhung der Stufe für autonomes Fahren & Während der Ausführung der Anwendungsszenarien 2,3 und 5 müssen die Kriterien des BASt \textit{Fahraufgaben des Fahres nach Automatisierungsgrad} für das Level 4 erfüllt werden. \newline
+	ANF\_04 & Erhöhung der Stufe für autonomes Fahren & Während der Ausführung der Anwendungsszenarien 2,3 und 5 müssen die Kriterien des BASt \textit{Fahraufgaben des Fahres nach Automatisierungsgrad} für das Level 4 erfüllt werden. Eine Checkliste wird nach der Tabelle aus der zugehörigen Anforderung des Lastenhefts erstellt und abgearbeitet. \newline
 	
 	\underline{Ergebnis:}\newline
 	
 	\textbf{} %hier kommt bestanden oder so rein
-	& 	Checkliste für Kriterien
+	& 	Checkliste
 	\\
 	\hline
 	ANF\_05 & Posenschätzung in vorhandener statischer Karte & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
@@ -209,7 +217,7 @@ sorting=none,%
 	Kompass
 	\\
 	\hline
-	ANF\_06 & Anfahren einer vom benutzer vorgegebenen Zielpose & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_06 & Anfahren einer vom Benutzer vorgegebenen Zielpose & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 		\begin{itemize}
 			
 			
@@ -217,7 +225,7 @@ sorting=none,%
 			\item[2.]	Launch-File starten (Lokalisierung oder SLAM)
 			\item[3.]	Resetknopf betätigen
 			\item[4.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen
-			\item[5.]	Aufforderung des Roboterszur Übernahme der Fahraufgabe
+			\item[5.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
 			\item[6.]	Quittierung durch Benutzer
 			\item[7.]	Vollautomatisiertes durchführen der Fahraufgabe
 			\item[8.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
@@ -234,12 +242,12 @@ sorting=none,%
 	\\
 	\hline
 	
-	ANF\_07 & Erkennung von Sprache des Benutzers & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_07 & Erkennung von bedienungsorientierter Sprache des Benutzers & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Launch-File starten (SpeechRecognition) und Mikrofon auswählen
-		\item[3.]	Über die vorgegebene Zeitspanne in das Mikrofon sprechen
+		\item[3.]	Über die vorgegebene Zeitspanne in das Mikrofon eine bedienungsorientierte Wortgruppe sprechen
 		\item[4.]	Abonnieren der veröffentlichten \textit{ROS-Topic}
 		\item[5.]	Vergleich der Transkription mit der Spracheingabe
 				
@@ -254,16 +262,15 @@ sorting=none,%
 	\\
 	\hline
 	
-	ANF\_08 & Erkennung von Personen in Reichweite der verwendeten Sensorik & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_08 & Erkennung und Unterscheiden von Personen in Reichweite der vorgesehenen Sensorik & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
-		
-		
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (People2Pose)
-		\item[3.]	Der Benutzer stellt sich in das Sichtfeld einer Kamera
-		\item[4.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel
-		\item[5.]	Abonnieren der Veröffentlichten \textit{ROS-Topic} 
-		\item[6.]	Positionsschätzung mit Messung vergleichen. Bezugspunkt ist das Roboterzentrum
+			
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
+		\item[2.]	Launch-File starten (People2Pose).
+		\item[3.]	Benutzer I stellt sich in das Sichtfeld einer Kamera.
+		\item[4.]	Benutzer I verlässt das Sichtfeld und Benutzer II betritt dieses.
+		\item[5.]	Benutzer I und betritt das Sichtfeld und wird wiedererkannt.
+		\item[6.]	Abonnieren der veröffentlichten \textit{ROS-Topic} und Vergleichen der Daten
 
 	\end{itemize}
 	
@@ -279,12 +286,17 @@ sorting=none,%
 	
 	ANF\_09 & Tracking von erkannten Personen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (People2Pose)
-		\item[3.]	Der Benutzer bewegt sich im Sichtfeld einer Kamera
-		\item[4.]Abonnieren der Veröffentlichten \textit{ROS-Topic} , welche die Transkription beinhaltet 
-		\item[5.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel
-		\item[6.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Roboterzentrum
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).,
+		\item[2.]	Launch-File starten (People2Pose).
+		\item[3.]	Widerholen der Schritte drei bis fünf aus ANF\_08.
+		\item[4.]	Abonnieren der Veröffentlichten \textit{ROS-Topic}. 
+		\item[5.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel.
+		\item[6.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Kamerakoordinatensystem.
+		\item[7.]	Neustart des Roboters und wiederausführung des Programms.
+		\item[8.]	Benutzer I und betritt das Sichtfeld und wird wiedererkannt.
+		\item[9.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel.
+		\item[10.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Kamerakoordinatensystem.
+		
 	\end{itemize}
 	
 	\underline{Ergebnis:}\newline
@@ -296,31 +308,13 @@ sorting=none,%
 	\textit{Kinect-Kameras}
 	\\
 	\hline
-	
-		ANF\_10 & Sprachausgabe an Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+		
+	ANF\_10 & Sprachausgabe an Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (Ausgabe)
-		\item[3.]	Eingabe der geforderten Ausgabe, z.B. als String
-		\item[4.]	Zuhören und sicherstellen, dass die Lautsprecher eingeschaltet sind
-	\end{itemize}
-	
-	\underline{Ergebnis:}\newline
-	\newline
-	
-	\textbf{}%bestanden?
-	& \textit{ROS}\newline
-	Lautsprecher
-	\\
-	\hline
-	
-	ANF\_11 & Bedienung durch Sprachbefehle & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
-	\begin{itemize}
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (SpeechRecognition)
-		\item[3.]	Der Benutzer spricht einen Roboter-Spezifische Wortgruppe in das Mikrofon der Kinect-Kamera 
-		\item[4.]	Quittieren einer Handlungsableitung
-		\item[5.]	Der Roboter führt die spezifische Handlung aus
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
+		\item[2.]	Launch-File starten (Ausgabe).
+		\item[3.]	Eingabe der geforderten Ausgabe als String.
+		\item[4.]	Zuhören und sicherstellen, dass die Lautsprecher eingeschaltet sind.
 	\end{itemize}
 	
 	\underline{Ergebnis:}\newline
@@ -333,7 +327,7 @@ sorting=none,%
 	\\
 	\hline
 	
-	ANF\_12 & Autonomes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_11& Autonomes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Launch-File starten (Lokalisierung)
