@@ -121,9 +121,9 @@ sorting=none,%
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Launch-File starten (Manuelles Fahren)
 		\item[3.]	Resetknopf betätigen
-		\item[4.]	Manuelle Fahraufgaben mit hilfe des Joysticks durchführen
-		\item[5.]	Aktuelle Posenwineklschätzung durch IMU-Sensorik aus dem \textit{ROS}-Netzwerk abbonieren
-		\item[6.]	Posenwinkelschätzung des verwendeten SLAM-Algorithmus aus dem \textit{ROS}-Netzwerk abbonieren
+		\item[4.]	Manuelle Fahraufgaben mithilfe des Joysticks durchführen
+		\item[5.]	Aktuelle Posenwineklschätzung durch IMU-Sensorik aus dem \textit{ROS}-Netzwerk abonieren
+		\item[6.]	Posenwinkelschätzung des verwendeten SLAM-Algorithmus aus dem \textit{ROS}-Netzwerk abonieren
 		\item[7.]	Vergleich der Posenwinkelschätzungen im Simulation Data Inspector
 
 		
@@ -147,6 +147,7 @@ sorting=none,%
 		\item[3.]	Resetknopf betätigen
 		\item[4.]	Bewegungsvorgabe durch den Benutzer mithilfe des Joysticks oder einer Zielvorgabe in \textit{Rviz}.
 		\item[5.]	Am Joystick die Tasten \glqq left trigger\grqq{} und \glqq right trigger\grqq{} drücken
+		\item[6.]	Vergleich mit Lageplan des D3-Gebäudes
 		
 	\end{itemize}
 	
@@ -165,6 +166,7 @@ sorting=none,%
 		\item[2.]	Launch-File starten (\textit{SLAM + Explore lite})
 		\item[3.]	Resetknopf drücken
 		\item[4.]	Am Joystick die Tasten \glqq left trigger\grqq{} und \glqq right trigger\grqq{} drücken
+		\item[5.]	Vergleich mit Lageplan des D3-Gebäudes
 		
 	\end{itemize}
 	
@@ -237,9 +239,9 @@ sorting=none,%
 		
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Launch-File starten (SpeechRecognition) und Mikrofon auswählen
-		\item[3.]	Vorgegebene Zeit in das Mikrofon sprechen
-		\item[4.]	Abonnieren der Veröffentlichten \textit{ROS-Topic}
-		\item[5.]	Vergleich der Transkription mit Spracheingabe
+		\item[3.]	Über die vorgegebene Zeitspanne in das Mikrofon sprechen
+		\item[4.]	Abonnieren der veröffentlichten \textit{ROS-Topic}
+		\item[5.]	Vergleich der Transkription mit der Spracheingabe
 				
 	\end{itemize}
 	
@@ -261,7 +263,7 @@ sorting=none,%
 		\item[3.]	Der Benutzer stellt sich in das Sichtfeld einer Kamera
 		\item[4.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel
 		\item[5.]	Abonnieren der Veröffentlichten \textit{ROS-Topic} 
-		\item[6.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Roboterzentrum
+		\item[6.]	Positionsschätzung mit Messung vergleichen. Bezugspunkt ist das Roboterzentrum
 
 	\end{itemize}
 	
@@ -298,9 +300,9 @@ sorting=none,%
 		ANF\_10 & Sprachausgabe an Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (??)
+		\item[2.]	Launch-File starten (Ausgabe)
 		\item[3.]	Eingabe der geforderten Ausgabe, z.B. als String
-		\item[4.]	Zuhören und sicherstellen das die Lautsprecher eingeschaltet sind
+		\item[4.]	Zuhören und sicherstellen, dass die Lautsprecher eingeschaltet sind
 	\end{itemize}
 	
 	\underline{Ergebnis:}\newline
@@ -326,18 +328,17 @@ sorting=none,%
 	
 	\textbf{}%bestanden?
 	& \textit{ROS}\newline
-	\newline
 	\textit{Kinect-Mikrofon}
 	\textit{Matlab}
 	\\
 	\hline
 	
-	ANF\_12 & Automes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_12 & Autonomes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Launch-File starten (Lokalisierung)
 		\item[3.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
-		\item[4.]	Aufforderung des Roboterszur Übernahme der Fahraufgabe
+		\item[4.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
 		\item[5.]	Quittierung durch Benutzer
 		\item[6.]	Vollautomatisiertes durchführen der Fahraufgabe
 		\item[7.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
