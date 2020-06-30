@@ -1,0 +1,4 @@
+https://stackoverflow.com/questions/49221565/unable-to-use-cv-bridge-with-ros-kinetic-and-python3
+
+1.) Seite benutzen (siehe oben)
+2.) Kann bei Pi abweichen
