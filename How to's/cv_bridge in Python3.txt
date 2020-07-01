@@ -2,3 +2,4 @@ https://stackoverflow.com/questions/49221565/unable-to-use-cv-bridge-with-ros-ki
 
 1.) Seite benutzen (siehe oben)
 2.) Kann bei Pi abweichen
+3.) Daran denken den PYTHONPATH auf nur Python3 zu stellen-->mit "echo PYTHONPATH" kann herausgefunden werden was eingestellt ist
