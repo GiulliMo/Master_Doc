@@ -1,0 +1,8 @@
+Tensorflow:
+-bietet mit tensorflow lite eine übertragung des Programms auf eingebettete systeme
+-runtime
+-buch-->intelligent computing information and control systems
+-buch:advances in information and communication
+
+Unterschied machine learing deep learning:
+-buch:advances in information and communication
