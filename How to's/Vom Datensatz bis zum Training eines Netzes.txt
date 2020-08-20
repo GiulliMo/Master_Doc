@@ -1,0 +1,9 @@
+Bei Google nach "Coco Dataset" suchen und auf die coco Seite gehen.
+Auf Downloads klicken und einen Datensatz laden (Bilder und Annotations)
+Coco API herunterladen und installieren
+Mithilfe der .ipynb Dateien und Jupyter Notebook (muss installiert werden) die Demos so umschreiben, dass Bilder mit der entsprechenden Klasse oder den entsprechenden Klassen aussortiert werden.
+coco2kitti.py (mit py3 ausführen) aus unserem Git nutzen und aus dem coco Datensatz ein Kitti datensatz zu machen
+der letzte Schritt kann übersprungen werden wenn man mit coco Annotations weiterarbeiten möchte
+Tensorflow api herunterladen und installieren (achtung auch den protoc befehl ausführen für pb2 dateien)
+aus research/object-detection/dataset-tools/ create_kitti...py nutzen um tfrecord zu erstellen (auf ordnerstruktur achten)
+nun aus tensorflow api model_main.py nutzen um training anzustoßen (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_training_and_evaluation.md  ... https://liupeirong.github.io/tfObjectDetection/)
