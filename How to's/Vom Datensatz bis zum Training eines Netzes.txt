@@ -7,3 +7,8 @@ der letzte Schritt kann übersprungen werden wenn man mit coco Annotations weite
 Tensorflow api herunterladen und installieren (achtung auch den protoc befehl ausführen für pb2 dateien)
 aus research/object-detection/dataset-tools/ create_kitti...py nutzen um tfrecord zu erstellen (auf ordnerstruktur achten)
 nun aus tensorflow api model_main.py nutzen um training anzustoßen (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_training_and_evaluation.md  ... https://liupeirong.github.io/tfObjectDetection/)
+
+
+python model_main.py --pipeline_config_path=/home/alf/coco/resmod/models/my_model_dir/pipeline.config --model_dir=/home/alf/coco/resmod/models/my_model_dir/train/ --alsologtostderr
+
+python object_detection/export_tflite_ssd_graph.py     --pipeline_config_path path/to/ssd_mobilenet.config     --trained_checkpoint_prefix path/to/model.ckpt \
