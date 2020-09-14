@@ -10,5 +10,7 @@ nun aus tensorflow api model_main.py nutzen um training anzustoßen (https://git
 
 
 python model_main.py --pipeline_config_path=/home/alf/coco/resmod/models/my_model_dir/pipeline.config --model_dir=/home/alf/coco/resmod/models/my_model_dir/train/ --alsologtostderr
+Auf win(conda py37): python model_main.py --pipeline_config_path=..\..\..\..\resmod\models\my_model_dir\pipeline.config --model_dir=..\..\..\..\resmod\models\my_model_dir\train\ --alsologtostderr
+
 
 python object_detection/export_tflite_ssd_graph.py     --pipeline_config_path path/to/ssd_mobilenet.config     --trained_checkpoint_prefix path/to/model.ckpt \
