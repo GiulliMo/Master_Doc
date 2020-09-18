@@ -16,9 +16,13 @@ braucht man nicht-->python object_detection/export_inference_graph.py --input_ty
 
 
 https://gist.github.com/apivovarov/eff80275d0f72e4582c105921919b852
+<<<<<<< HEAD
 python3 object_detection/export_tflite_ssd_graph.py --pipeline_config_path=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/pipeline.config --trained_checkpoint_prefix=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/model.ckpt --output_directory=/tmp/tflite_graph --add_postprocessing_op=true
 Für Win also --> python ..\..\..\Tensorflow\models\research\object_detection\export_tflite_ssd_graph.py --pipeline_config_path=pipeline.config --trained_checkpoint_prefix=model.ckpt --output_directory=..\tflite_graph --add_postprocessing_op=true
 
 
+=======
+python object_detection/export_tflite_ssd_graph.py --pipeline_config_path=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/pipeline.config --trained_checkpoint_prefix=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/model.ckpt --output_directory=/tmp/tflite_graph --add_postprocessing_op=true
+>>>>>>> aa86b42e853a0d1df20875835b8a46b2ec7e7d4b
 
 tflite_convert --graph_def_file=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/tflite_graph.pb --output_file=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/model.tflite --output_format=TFLITE --input_arrays=normalized_input_image_tensor --input_shapes=1,300,300,3 --inference_type=FLOAT --output_arrays="TFLite_Detection_PostProcess,TFLite_Detection_PostProcess:1,TFLite_Detection_PostProcess:2,TFLite_Detection_PostProcess:3" --allow_custom_ops
