@@ -6,6 +6,9 @@ coco2kitti.py (mit py3 ausführen) aus unserem Git nutzen und aus dem coco Daten
 der letzte Schritt kann übersprungen werden wenn man mit coco Annotations weiterarbeiten möchte
 Tensorflow api herunterladen und installieren (achtung auch den protoc befehl ausführen für pb2 dateien)
 aus research/object-detection/dataset-tools/ create_kitti...py nutzen um tfrecord zu erstellen (auf ordnerstruktur achten)
+
+Linux--> python models/research/object_detection/dataset_tools/create_coco_tf_record.py --train_image_dir=./Trainingsdaten/data_object_image_2/training/image_2 --val_image_dir=./Trainingsdaten/data_object_image_2/training/image_2 --output_dir=./tfrecord --train_annotations_file=./annotations/instances_train2017.json --val_annotations_file=./annotations/instances_val2017.json --remove_non_person_annotations=True --remove_non_person_images=True
+
 nun aus tensorflow api model_main.py nutzen um training anzustoßen (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_training_and_evaluation.md  ... https://liupeirong.github.io/tfObjectDetection/)
 
 
