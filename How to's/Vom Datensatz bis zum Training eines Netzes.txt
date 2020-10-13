@@ -8,6 +8,9 @@ Tensorflow api herunterladen und installieren (achtung auch den protoc befehl au
 aus research/object-detection/dataset-tools/ create_kitti...py nutzen um tfrecord zu erstellen (auf ordnerstruktur achten)
 
 Linux--> python models/research/object_detection/dataset_tools/create_coco_tf_record.py --train_image_dir=./Trainingsdaten/data_object_image_2/training/image_2 --val_image_dir=./Trainingsdaten/data_object_image_2/training/image_2 --output_dir=./tfrecord --train_annotations_file=./annotations/instances_train2017.json --val_annotations_file=./annotations/instances_val2017.json --remove_non_person_annotations=True --remove_non_person_images=True
+Win--> python ..\Tensorflow\models\research\object_detection\dataset_tools\create_coco_tf_record.py --train_image_dir=.\train2017 --val_image_dir=.\val2017 --output_dir=.\tfrecord --train_annotations_file=.\annotations\instances_train2017.json --val_annotations_file=.\annotations\instances_val2017.json --remove_non_person_annotations=True --remove_non_person_images=True --test_image_dir=test2017 --testdev_annotations_file=.\annotations\image_info_test-dev2017.json
+
+oder python ..\Tensorflow\models\research\object_detection\dataset_tools\create_kitti_tf_record.py --data_dir=kitti --output_path=kitti\tfrecord\ --classes_to_use=pedestrian --label_map_path=.\kitti\kitti_label_map.pbtxt --validation_set_size=500
 
 nun aus tensorflow api model_main.py nutzen um training anzustoßen (https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_training_and_evaluation.md  ... https://liupeirong.github.io/tfObjectDetection/)
 
@@ -21,7 +24,11 @@ braucht man nicht-->python object_detection/export_inference_graph.py --input_ty
 https://gist.github.com/apivovarov/eff80275d0f72e4582c105921919b852
 
 python3 object_detection/export_tflite_ssd_graph.py --pipeline_config_path=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/pipeline.config --trained_checkpoint_prefix=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/model.ckpt --output_directory=/tmp/tflite_graph --add_postprocessing_op=true
-Für Win also --> python ..\..\..\Tensorflow\models\research\object_detection\export_tflite_ssd_graph.py --pipeline_config_path=pipeline.config --trained_checkpoint_prefix=model.ckpt --output_directory=..\tflite --add_postprocessing_op=true
+Für Win also --> python ..\..\..\Tensorflow\models\research\object_detection\export_tflite_ssd_graph.py --pipeline_config_path=pipeline.config --trained_checkpoint_prefix=.\train\model.ckpt-283967 --output_directory=..\tflite --add_postprocessing_op=true
 
 tflite_convert --graph_def_file=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/tflite_graph.pb --output_file=/home/ubuntu/ssd_mobilenet_v1_coco_2018_01_28/model.tflite --output_format=TFLITE --input_arrays=normalized_input_image_tensor --input_shapes=1,300,300,3 --inference_type=FLOAT --output_arrays="TFLite_Detection_PostProcess,TFLite_Detection_PostProcess:1,TFLite_Detection_PostProcess:2,TFLite_Detection_PostProcess:3" --allow_custom_ops
 --> tflite_convert --graph_def_file=..\tflite\tflite_graph.pb --output_file=..\tflite\model.tflite --output_format=TFLITE --input_arrays=normalized_input_image_tensor --input_shapes=1,300,300,3 --inference_type=FLOAT --output_arrays="TFLite_Detection_PostProcess,TFLite_Detection_PostProcess:1,TFLite_Detection_PostProcess:2,TFLite_Detection_PostProcess:3" --allow_custom_ops
+
+UNBEDINGT DIE API VON DER GITHUBADRESSE WEITER OBEN NEHMEN...UNBEDINGT
+
+tensorboard--> tensorboard --logdir=.\train
