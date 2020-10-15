@@ -238,7 +238,6 @@ ANF\_06 & Erkennen und Unterscheiden von Personen in Reichweite der vorgesehenen
 
 \textbf{}	%hier kommt bestanden oder so rein
 & \textit{ROS}\newline
-Bandmaß\newline
 \textit{Kinect-Kameras}
 \\
 \hline
@@ -344,14 +343,12 @@ Bandmaß\newline
 			
 			
 			\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-			\item[2.]	Launch-File starten (Lokalisierung oder SLAM)
-			\item[3.]	Resetknopf betätigen
-			\item[4.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen
-			\item[5.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
-			\item[6.]	Quittierung durch Benutzer
-			\item[7.]	Vollautomatisiertes durchführen der Fahraufgabe
-			\item[8.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
-			\item[9.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
+			\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen
+			\item[3.]	Ausführen \textit{CANStartUp.sh}
+			\item[4.]	Resetknopf betätigen
+			\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{SLAM/Manuell} wechseln
+			\item[6.]	Eingabe von Fahrbefehlen mithilfe der Fernbedienung
+
 			
 		\end{itemize}
 	
@@ -360,7 +357,8 @@ Bandmaß\newline
 	
 	\textbf{}\textbf{}	%hier kommt bestanden oder so rein
 	& \textit{Rviz}\newline
-	\textit{Matlab}\newline
+	\textit{Joystick}\newline
+	\textit{Kinect-Kameras}
 	\\
 
 
@@ -368,14 +366,12 @@ Bandmaß\newline
 
 	ANF\_12& Kartographieren der Umgebung ohne Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (Lokalisierung)
-		\item[3.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
-		\item[4.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
-		\item[5.]	Quittierung durch Benutzer
-		\item[6.]	Vollautomatisiertes durchführen der Fahraufgabe
-		\item[7.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
-		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
+			\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen
+		\item[3.]	Ausführen \textit{CANStartUp.sh}
+		\item[4.]	Resetknopf betätigen
+		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{SLAM/Autonom} wechseln
+		\item[6.]	Eingabe von Fahrbefehlen mithilfe der Fernbedienung
 	\end{itemize}
 	
 	\underline{Ergebnis:}\newline
@@ -389,13 +385,13 @@ Bandmaß\newline
 	ANF\_13&Posenschätzung in vorhandener statischer Karte & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (Lokalisierung)
-		\item[3.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
-		\item[4.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
-		\item[5.]	Quittierung durch Benutzer
-		\item[6.]	Vollautomatisiertes durchführen der Fahraufgabe
-		\item[7.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
-		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
+		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen
+		\item[3.]	Ausführen \textit{CANStartUp.sh}
+		\item[4.]	Resetknopf betätigen
+		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{\textit{Lokalisierung}} wechseln
+		\item[6.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und abspeichern.
+		\item[7.]	Fahrzeug um definierte und bekannte Maße verschieben.
+		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und abspeichern. Differenz der zweiten und ersten Schätzung ergibt die Verschiebung aus Punkt 9. Position in der Karte mithilfe von Referenzobjekten aus der vorhandenen statischen Karte und der realen Umgebung auf Plausibilität prüfen.
 	\end{itemize}
 	
 	\underline{Ergebnis:}\newline
@@ -403,38 +399,39 @@ Bandmaß\newline
 	\textbf{}%bestanden?
 	& \textit{ROS}\newline
 	Bandmaß\newline
-	\textit{Kinect-Kameras}
+	\textit{Kinect-Kameras}\newline
+	\textit{LiDar}
 	\\
 	\hline
 	ANF\_14& Anfahren einer vom Benutzer vorgegebenen Zielpose & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (Lokalisierung)
-		\item[3.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
-		\item[4.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
-		\item[5.]	Quittierung durch Benutzer
-		\item[6.]	Vollautomatisiertes durchführen der Fahraufgabe
-		\item[7.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
-		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
-	\end{itemize}
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+	\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
+	\item[3.]	Ausführen \textit{CANStartUp.sh}
+	\item[4.]	Resetknopf betätigen.
+	\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{Drive/Autonom/to target} wechseln
+	\item[6.]	Eingabe eines \textit{Simple Goal} in \textit{Rviz} oder durch einen Sprachbefehl
+	\item[7.]	Durchführen der Fahraufgabe
+	\item[8.]	\textit{Simple Goal} und Posenschätzung mithilfe der Veröffentlichungen aus dem \textit{ROS}-Netzwerk vergleichen.
+\end{itemize}
+
 	
 	\underline{Ergebnis:}\newline
 	\newline
 	\textbf{}%bestanden?
 	& \textit{ROS}\newline
-	Bandmaß\newline
-	\textit{Kinect-Kameras}
+\textit{Rviz}\newline
 	\\
 	\hline
 	ANF\_15& Autonomes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (Lokalisierung)
-		\item[3.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
-		\item[4.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
-		\item[5.]	Quittierung durch Benutzer
-		\item[6.]	Vollautomatisiertes durchführen der Fahraufgabe
-		\item[7.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
+		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
+		\item[3.]	Ausführen \textit{CANStartUp.sh}
+		\item[4.]	Resetknopf betätigen.
+		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{Drive/Autonom/to target} wechseln
+		\item[6.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
+		\item[7.]	Vollautomatisiertes durchführen der Fahraufgabe
 		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
 	\end{itemize}
 	
@@ -442,8 +439,25 @@ Bandmaß\newline
 	\newline
 	\textbf{}%bestanden?
 	& \textit{ROS}\newline
-	Bandmaß\newline
-	\textit{Kinect-Kameras}
+	\\
+		ANF\_16& Risikominimaler Zustand & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
+		\item[3.]	Ausführen \textit{CANStartUp.sh}
+		\item[4.]	Resetknopf betätigen.
+		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{Stop} wechseln
+		\item[6.]	Betätigung aller Joystick Schalter,
+		\item[7.]   Einsprechen eines Sprachbefehls, 
+		\item[8.]	Überprüfen ob das ROS-Netzwerk offline ist
+		\item[8.]	Nach der Quittierung setzt das Fahrzeug keinen Fahrbefehl um
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	\textbf{}%bestanden?
+	& \textit{ROS}\newline
+	\textit{CAN-sniffer}
 	\\
 	\hline
 \end{longtable} 
