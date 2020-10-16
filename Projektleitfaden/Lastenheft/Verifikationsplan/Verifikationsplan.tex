@@ -113,32 +113,160 @@ sorting=none,%
 	\hline
 	\textbf{Nr./ID} & \textbf{Titel} & \textbf{Verifikation der Anforderung} & \textbf{Hilfsmittel}\\
 	\endhead
-	\hline
-	ANF\_01 & Posenwinkelbe- \newline stimmung des ALF & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
-	\begin{itemize}
-		
-		
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (Manuelles Fahren)
-		\item[3.]	Resetknopf betätigen
-		\item[4.]	Manuelle Fahraufgaben mithilfe des Joysticks durchführen
-		\item[5.]	Aktuelle Posenwineklschätzung durch IMU-Sensorik aus dem \textit{ROS}-Netzwerk abonnieren
-		\item[6.]	Posenwinkelschätzung des verwendeten SLAM-Algorithmus aus dem \textit{ROS}-Netzwerk abonnieren
-		\item[7.]	Vergleich der Posenwinkelschätzungen mit dem Winkel aus Schritt 6 im Simulation Data Inspector
 
-		
-	\end{itemize}
-	\textbf{}%hier kommt bestanden oder so rein
-	
-	\underline{Ergebnis:}\newline
-	\newline
-	
-	\textbf{}%hier kommt bestanden oder so rein
-	&\textit{ROS}\newline
-	\textit{Simulink}\
-	Joystick\\ 
+
 	\hline
-	ANF\_02 & Kartographierung der Umgebung mit Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+
+ANF\_$01$ & Sprachaufnahme per manueller Betätigung & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+\begin{itemize}
+	
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+	\item[2.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
+	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{/audioStream/pub/stream/topic}
+	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen
+	\item[5.]	In dem ROS log wird \textit{Start streaming audio...} geschrieben
+	\item[6.]	Nach der Aufnahme, wird in den ROS log \textit{Finish streaming audio...} geschrieben
+	\item[7.]	Abonnement der \textit{ROS-Topic} erhält eine neue Nachricht
+	
+	
+\end{itemize}
+
+\underline{Ergebnis:}\newline
+\newline
+
+\textbf{}	%hier kommt bestanden oder so rein
+& \textit{ROS}\newline
+\textit{Kinect-Mikrofon}\newline
+\textit{rostopic echo topicname}\newline
+\\
+\hline
+
+ANF\_$02$ & Erzeugen und bereitstellen einer Tonspur & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+\begin{itemize}
+	
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+	\item[2.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
+	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{/audioStream/pub/stream/topic}
+	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen
+	\item[5.]	Über die vorgegebene Zeitspanne von $t=5$ s in das Mikrofon eine bedienungsorientierte Wortgruppe sprechen
+	\item[6.]	Abonnement der \textit{ROS-Topic} erhält eine neue Nachricht, diese wird zu einer \textit{WAV}-Datei \textit{test.wav} konvertiert und liegt im Ordner des Knotens
+	\item[7.]	Abspielen der Audio Datei mit entsprechender Software
+\end{itemize}
+
+\underline{Ergebnis:}\newline
+\newline
+
+\textbf{}	%hier kommt bestanden oder so rein
+& \textit{ROS}\newline
+\textit{Kinect-Mikrofon}\newline
+\textit{rostopic echo topicname}\newline
+
+\\
+\hline
+
+ANF\_03 & Erkennung und Klassifizierung von bedienungsorientierter Sprache des Benutzers & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+\begin{itemize}
+	
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+	\item[2.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
+	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{recognizer/topicname/task}
+	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen und über die vorgegebene Zeitspanne in das Mikrofon eine bedienungsorientierte Wortgruppe sprechen
+	\item[5.]	Vergleich der veröffentlichten Klassifikation mit der zugehörigen Kategorie der Wortgruppe aus dem Datensatz \textit{random-distributed-dataset.json}
+	
+\end{itemize}
+
+\underline{Ergebnis:}\newline
+\newline
+
+\textbf{}	%hier kommt bestanden oder so rein
+& \textit{ROS}\newline
+\textit{Kinect-Mikrofon}\newline
+\textit{Datensatz}\newline
+\\
+\hline
+
+ANF\_04 & 	Erkennen von benutzerdefinierten Schlagwörtern & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+\begin{itemize}
+	
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+	\item[2.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
+	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{recognizer/topicname/buzz}
+	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen und über die vorgegebene Zeitspanne in das Mikrofon ein Schlagwort der Liste \textit{buzzword.json} sprechen
+	\item[5.]	Vergleich des veröffentlichten Schlagworts mit dem eingesprochenen
+	
+\end{itemize}
+
+\underline{Ergebnis:}\newline
+\newline
+
+\textbf{}	%hier kommt bestanden oder so rein
+& \textit{ROS}\newline
+\textit{Kinect-Mikrofon}\newline
+\\
+	\hline
+ANF\_05 & Erhöhung der Stufe für autonomes Fahren & Während der Ausführung autonomer Fahraufgaben müssen die Kriterien der Tabelle aus Abbildung 3 des Lastenhefts für das Level 5 erfüllt werden. Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+\begin{itemize}
+	
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+	\item[2.]	Zustandsautomat starten (python2 finitestatemachine.py) und bis zur Initialisierung warten
+	\item[3.]	Autonome Fahrmodi nach der manuellen Betätigung der Spracheingabe mit bedienungsorientierter, englischer Sprache aufrufen. Zum Beispiel: "Drive to location."
+	\item[4.]	Anweisungen des ALFs befolgen.
+	\item[5.]	Vergleich der Kriterien nach der genannten Tabelle mit dem Verhalten des ALFs.
+	
+\end{itemize}
+\underline{Ergebnis:}\newline
+
+\textbf{} %hier kommt bestanden oder so rein
+& 	Checkliste
+\\
+	\hline
+
+ANF\_06 & Erkennen und Unterscheiden von Personen in Reichweite der vorgesehenen Sensorik & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+\begin{itemize}
+	
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
+	\item[2.]	Launch-File starten (People2Pose).
+	\item[3.]	Benutzer I stellt sich in das Sichtfeld einer Kamera.
+	\item[4.]	Benutzer I verlässt das Sichtfeld und Benutzer II betritt dieses.
+	\item[5.]	Benutzer I und betritt das Sichtfeld und wird wiedererkannt.
+	\item[6.]	Abonnieren der veröffentlichten \textit{ROS-Topic} und Vergleichen der Daten
+	
+\end{itemize}
+
+\underline{Ergebnis:}\newline
+\newline
+
+\textbf{}	%hier kommt bestanden oder so rein
+& \textit{ROS}\newline
+\textit{Kinect-Kameras}
+\\
+\hline
+
+ANF\_07 & Wiedererkennung von Personen in Reichweite der vorgesehenen Sensorik nach einer definierten Zeit & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+\begin{itemize}
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).,
+	\item[2.]	Launch-File starten (People2Pose).
+	\item[3.]	Widerholen der Schritte drei bis fünf aus ANF\_08.
+	\item[4.]	Abonnieren der Veröffentlichten \textit{ROS-Topic}. 
+	\item[5.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel.
+	\item[6.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Kamerakoordinatensystem.
+	\item[7.]	Neustart des Roboters und wiederausführung des Programms.
+	\item[8.]	Benutzer I und betritt das Sichtfeld und wird wiedererkannt.
+	\item[9.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel.
+	\item[10.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Kamerakoordinatensystem.
+	
+\end{itemize}
+
+\underline{Ergebnis:}\newline
+\newline
+
+\textbf{}%bestanden?
+& \textit{ROS}\newline
+Bandmaß\newline
+\textit{Kinect-Kameras}
+\\
+	\hline
+	ANF\_08 & Wiedererkennung von Personen in Reichweite der vorgesehenen Sensorik innerhalb einer vorgegebenen Zeit & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		
 		
@@ -163,7 +291,7 @@ sorting=none,%
 	
 	& \textit{Rviz \newline Joystick}\\
 	\hline
-	ANF\_03 & Kartographieren der Umgebung ohne Bewegungsvorgabe durch den Benutzer& Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_09 & Registrierung von Personen in Reichweite der vorgesehenen Sensorik innerhalb einer vorgegebenen Zeit& Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		
 		
@@ -184,16 +312,9 @@ sorting=none,%
 	\textbf{}%hier kommt bestanden oder so rein
 	
 	& \textit{Rviz \newline Joystick}\\
+
 	\hline
-	ANF\_04 & Erhöhung der Stufe für autonomes Fahren & Während der Ausführung der Anwendungsszenarien 2,3 und 5 müssen die Kriterien des BASt \textit{Fahraufgaben des Fahres nach Automatisierungsgrad} für das Level 4 erfüllt werden. Eine Checkliste wird nach der Tabelle aus der zugehörigen Anforderung des Lastenhefts erstellt und abgearbeitet. \newline
-	
-	\underline{Ergebnis:}\newline
-	
-	\textbf{} %hier kommt bestanden oder so rein
-	& 	Checkliste
-	\\
-	\hline
-	ANF\_05 & Posenschätzung in vorhandener statischer Karte & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_10 & Positionsschätzung von erkannten Personen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		
 		
@@ -217,19 +338,17 @@ sorting=none,%
 	Kompass
 	\\
 	\hline
-	ANF\_06 & Anfahren einer vom Benutzer vorgegebenen Zielpose & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_11 & Kartographierung der Umgebung mit Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 		\begin{itemize}
 			
 			
 			\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-			\item[2.]	Launch-File starten (Lokalisierung oder SLAM)
-			\item[3.]	Resetknopf betätigen
-			\item[4.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen
-			\item[5.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
-			\item[6.]	Quittierung durch Benutzer
-			\item[7.]	Vollautomatisiertes durchführen der Fahraufgabe
-			\item[8.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
-			\item[9.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
+			\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen
+			\item[3.]	Ausführen \textit{CANStartUp.sh}
+			\item[4.]	Resetknopf betätigen
+			\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{SLAM/Manuell} wechseln
+			\item[6.]	Eingabe von Fahrbefehlen mithilfe der Fernbedienung
+
 			
 		\end{itemize}
 	
@@ -238,104 +357,81 @@ sorting=none,%
 	
 	\textbf{}\textbf{}	%hier kommt bestanden oder so rein
 	& \textit{Rviz}\newline
-	\textit{Matlab}\newline
+	\textit{Joystick}\newline
+	\textit{Kinect-Kameras}
 	\\
-	\hline
-	
-	ANF\_07 & Erkennung von bedienungsorientierter Sprache des Benutzers & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
-	\begin{itemize}
-		
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (SpeechRecognition) und Mikrofon auswählen
-		\item[3.]	Über die vorgegebene Zeitspanne in das Mikrofon eine bedienungsorientierte Wortgruppe sprechen
-		\item[4.]	Abonnieren der veröffentlichten \textit{ROS-Topic}
-		\item[5.]	Vergleich der Transkription mit der Spracheingabe
-				
-	\end{itemize}
-	
-	\underline{Ergebnis:}\newline
-	\newline
-	
-	\textbf{}	%hier kommt bestanden oder so rein
-	& \textit{ROS}\newline
-	\textit{Kinect-Mikrofon}\newline
-	\\
-	\hline
-	
-	ANF\_08 & Erkennung und Unterscheiden von Personen in Reichweite der vorgesehenen Sensorik & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
-	\begin{itemize}
-			
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
-		\item[2.]	Launch-File starten (People2Pose).
-		\item[3.]	Benutzer I stellt sich in das Sichtfeld einer Kamera.
-		\item[4.]	Benutzer I verlässt das Sichtfeld und Benutzer II betritt dieses.
-		\item[5.]	Benutzer I und betritt das Sichtfeld und wird wiedererkannt.
-		\item[6.]	Abonnieren der veröffentlichten \textit{ROS-Topic} und Vergleichen der Daten
 
-	\end{itemize}
-	
-	\underline{Ergebnis:}\newline
-	\newline
-	
-	\textbf{}	%hier kommt bestanden oder so rein
-	& \textit{ROS}\newline
-	Bandmaß\newline
-	\textit{Kinect-Kameras}
-	\\
+
 	\hline
-	
-	ANF\_09 & Tracking von erkannten Personen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+
+	ANF\_12& Kartographieren der Umgebung ohne Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).,
-		\item[2.]	Launch-File starten (People2Pose).
-		\item[3.]	Widerholen der Schritte drei bis fünf aus ANF\_08.
-		\item[4.]	Abonnieren der Veröffentlichten \textit{ROS-Topic}. 
-		\item[5.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel.
-		\item[6.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Kamerakoordinatensystem.
-		\item[7.]	Neustart des Roboters und wiederausführung des Programms.
-		\item[8.]	Benutzer I und betritt das Sichtfeld und wird wiedererkannt.
-		\item[9.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel.
-		\item[10.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Kamerakoordinatensystem.
-		
+			\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen
+		\item[3.]	Ausführen \textit{CANStartUp.sh}
+		\item[4.]	Resetknopf betätigen
+		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{SLAM/Autonom} wechseln
+		\item[6.]	Eingabe von Fahrbefehlen mithilfe der Fernbedienung
 	\end{itemize}
 	
 	\underline{Ergebnis:}\newline
 	\newline
-	
 	\textbf{}%bestanden?
 	& \textit{ROS}\newline
 	Bandmaß\newline
 	\textit{Kinect-Kameras}
 	\\
 	\hline
-		
-	ANF\_10 & Sprachausgabe an Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
-	\begin{itemize}
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
-		\item[2.]	Launch-File starten (Ausgabe).
-		\item[3.]	Eingabe der geforderten Ausgabe als String.
-		\item[4.]	Zuhören und sicherstellen, dass die Lautsprecher eingeschaltet sind.
-	\end{itemize}
-	
-	\underline{Ergebnis:}\newline
-	\newline
-	
-	\textbf{}%bestanden?
-	& \textit{ROS}\newline
-	\textit{Kinect-Mikrofon}
-	\textit{Matlab}
-	\\
-	\hline
-	
-	ANF\_11& Autonomes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_13&Posenschätzung in vorhandener statischer Karte & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (Lokalisierung)
-		\item[3.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
-		\item[4.]	Aufforderung des Roboters zur Übernahme der Fahraufgabe
-		\item[5.]	Quittierung durch Benutzer
-		\item[6.]	Vollautomatisiertes durchführen der Fahraufgabe
-		\item[7.]	Bestätigung des Roboters, dass die Fahraufgabe durchgeführt wurde
+		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen
+		\item[3.]	Ausführen \textit{CANStartUp.sh}
+		\item[4.]	Resetknopf betätigen
+		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{\textit{Lokalisierung}} wechseln
+		\item[6.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und abspeichern.
+		\item[7.]	Fahrzeug um definierte und bekannte Maße verschieben.
+		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und abspeichern. Differenz der zweiten und ersten Schätzung ergibt die Verschiebung aus Punkt 9. Position in der Karte mithilfe von Referenzobjekten aus der vorhandenen statischen Karte und der realen Umgebung auf Plausibilität prüfen.
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	\textbf{}%bestanden?
+	& \textit{ROS}\newline
+	Bandmaß\newline
+	\textit{Kinect-Kameras}\newline
+	\textit{LiDar}
+	\\
+	\hline
+	ANF\_14& Anfahren einer vom Benutzer vorgegebenen Zielpose & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+	\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
+	\item[3.]	Ausführen \textit{CANStartUp.sh}
+	\item[4.]	Resetknopf betätigen.
+	\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{Drive/Autonom/to target} wechseln
+	\item[6.]	Eingabe eines \textit{Simple Goal} in \textit{Rviz} oder durch einen Sprachbefehl
+	\item[7.]	Durchführen der Fahraufgabe
+	\item[8.]	\textit{Simple Goal} und Posenschätzung mithilfe der Veröffentlichungen aus dem \textit{ROS}-Netzwerk vergleichen.
+\end{itemize}
+
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	\textbf{}%bestanden?
+	& \textit{ROS}\newline
+\textit{Rviz}\newline
+	\\
+	\hline
+	ANF\_15& Autonomes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
+		\item[3.]	Ausführen \textit{CANStartUp.sh}
+		\item[4.]	Resetknopf betätigen.
+		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{Drive/Autonom/to target} wechseln
+		\item[6.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
+		\item[7.]	Vollautomatisiertes durchführen der Fahraufgabe
 		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
 	\end{itemize}
 	
@@ -343,8 +439,25 @@ sorting=none,%
 	\newline
 	\textbf{}%bestanden?
 	& \textit{ROS}\newline
-	Bandmaß\newline
-	\textit{Kinect-Kameras}
+	\\
+		ANF\_16& Risikominimaler Zustand & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\begin{itemize}
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
+		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
+		\item[3.]	Ausführen \textit{CANStartUp.sh}
+		\item[4.]	Resetknopf betätigen.
+		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{Stop} wechseln
+		\item[6.]	Betätigung aller Joystick Schalter,
+		\item[7.]   Einsprechen eines Sprachbefehls, 
+		\item[8.]	Überprüfen ob das ROS-Netzwerk offline ist
+		\item[8.]	Nach der Quittierung setzt das Fahrzeug keinen Fahrbefehl um
+	\end{itemize}
+	
+	\underline{Ergebnis:}\newline
+	\newline
+	\textbf{}%bestanden?
+	& \textit{ROS}\newline
+	\textit{CAN-sniffer}
 	\\
 	\hline
 \end{longtable} 
