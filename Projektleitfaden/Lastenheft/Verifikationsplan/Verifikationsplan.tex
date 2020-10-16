@@ -63,6 +63,7 @@
 \usepackage{placeins}
 \sloppy
 \usepackage{mathrsfs}
+\usepackage{underscore}
 \usepackage{pdfpages}
 \usepackage{enumitem}
 \graphicspath{{_img/}}
@@ -122,7 +123,7 @@ ANF\_$01$ & Sprachaufnahme per manueller Betätigung & Zur Durchführung sind fo
 	
 	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 	\item[2.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
-	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{/audioStream/pub/stream/topic}
+	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{/audio_stream}
 	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen
 	\item[5.]	In dem ROS log wird \textit{Start streaming audio...} geschrieben
 	\item[6.]	Nach der Aufnahme, wird in den ROS log \textit{Finish streaming audio...} geschrieben
@@ -148,7 +149,7 @@ ANF\_$02$ & Erzeugen und bereitstellen einer Tonspur & Zur Durchführung sind fo
 	\item[2.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
 	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{/audioStream/pub/stream/topic}
 	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen
-	\item[5.]	Über die vorgegebene Zeitspanne von $t=5$ s in das Mikrofon eine bedienungsorientierte Wortgruppe sprechen
+	\item[5.]	Über die vorgegebene Zeitspanne von $t=5$ s eine Wortgruppe in das Mikrofon sprechen
 	\item[6.]	Abonnement der \textit{ROS-Topic} erhält eine neue Nachricht, diese wird zu einer \textit{WAV}-Datei \textit{test.wav} konvertiert und liegt im Ordner des Knotens
 	\item[7.]	Abspielen der Audio Datei mit entsprechender Software
 \end{itemize}
@@ -169,8 +170,8 @@ ANF\_03 & Erkennung und Klassifizierung von bedienungsorientierter Sprache des B
 	
 	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 	\item[2.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
-	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{recognizer/topicname/task}
-	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen und über die vorgegebene Zeitspanne in das Mikrofon eine bedienungsorientierte Wortgruppe sprechen
+	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{transcript/task}
+	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen und über die vorgegebene Zeitspanne eine bedienungsorientierte Wortgruppe in das Mikrofon sprechen. (Hinweis: Bitte sprechen sie ca. 1 m von dem Aufnahmgerät entfernt in Richtung des Mikrofons)
 	\item[5.]	Vergleich der veröffentlichten Klassifikation mit der zugehörigen Kategorie der Wortgruppe aus dem Datensatz \textit{random-distributed-dataset.json}
 	
 \end{itemize}
@@ -190,9 +191,10 @@ ANF\_04 & 	Erkennen von benutzerdefinierten Schlagwörtern & Zur Durchführung s
 	
 	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 	\item[2.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
-	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{recognizer/topicname/buzz}
-	\item[4.]	\textit{Start} Knopf der Fernbedienung betätigen und über die vorgegebene Zeitspanne in das Mikrofon ein Schlagwort der Liste \textit{buzzword.json} sprechen
-	\item[5.]	Vergleich des veröffentlichten Schlagworts mit dem eingesprochenen
+	\item[3.]	Abonnieren der veröffentlichten \textit{ROS-Topic} \textit{transcript/buzz}
+	\item[4.] \textit{Start} Knopf der Fernbedienung betätigen und über die vorgegebene Zeitspanne den Satz \glqq drive to location\grqq in das Mikrofon sprechen
+	\item[5.]	\textit{Start} Knopf der Fernbedienung betätigen und über die vorgegebene Zeitspanne ein Schlagwort der Liste \textit{buzzword.json} in das Mikrofon sprechen
+	\item[6.]	Vergleich des veröffentlichten Schlagworts mit dem eingesprochenen
 	
 \end{itemize}
 
@@ -208,10 +210,13 @@ ANF\_05 & Erhöhung der Stufe für autonomes Fahren & Während der Ausführung a
 \begin{itemize}
 	
 	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-	\item[2.]	Zustandsautomat starten (python2 finitestatemachine.py) und bis zur Initialisierung warten
-	\item[3.]	Autonome Fahrmodi nach der manuellen Betätigung der Spracheingabe mit bedienungsorientierter, englischer Sprache aufrufen. Zum Beispiel: "Drive to location."
-	\item[4.]	Anweisungen des ALFs befolgen.
-	\item[5.]	Vergleich der Kriterien nach der genannten Tabelle mit dem Verhalten des ALFs.
+	\item[2.]	Zustandsautomat starten (python finitestatemachine.py) und bis zur Initialisierung warten
+	\item[3.]	Launch-File starten (./launch.sh) und bis zur Initialisierung warten
+	\item[4.]	Autonomen Fahrmodus nach der manuellen Betätigung der Spracheingabe mit dem Satz \glqq Drive to location\grqq\text{ } starten
+	\item[5.]	Anweisungen des ALFs befolgen
+	\item[6.]	Ausführen \textit{CANStartUp.sh}
+	\item[7.]	Zielpose manuell veröffentlichen
+	\item[8.]	Anfahren der Zielpose
 	
 \end{itemize}
 \underline{Ergebnis:}\newline
@@ -225,11 +230,11 @@ ANF\_06 & Erkennen und Unterscheiden von Personen in Reichweite der vorgesehenen
 \begin{itemize}
 	
 	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
-	\item[2.]	Launch-File starten (People2Pose).
-	\item[3.]	Benutzer I stellt sich in das Sichtfeld einer Kamera.
-	\item[4.]	Benutzer I verlässt das Sichtfeld und Benutzer II betritt dieses.
-	\item[5.]	Benutzer I und betritt das Sichtfeld und wird wiedererkannt.
-	\item[6.]	Abonnieren der veröffentlichten \textit{ROS-Topic} und Vergleichen der Daten
+	\item[2.]	Ausführen (python finitestatemachine.py und python people2pose.py)
+	\item[3.]	Registrierter Benutzer 1 stellt sich in das Sichtfeld einer Kamera und wendet dieser zu (Hinweis: Status der Erkennung wird über die Lautsprecher ausgegeben)
+	\item[4.]	Registrierter Benutzer 1 verlässt das Sichtfeld
+	\item[5.]	Registrierter Benutzer 2 stellt sich in das Sichtfeld 
+	
 	
 \end{itemize}
 
@@ -237,23 +242,18 @@ ANF\_06 & Erkennen und Unterscheiden von Personen in Reichweite der vorgesehenen
 \newline
 
 \textbf{}	%hier kommt bestanden oder so rein
-& \textit{ROS}\newline
-\textit{Kinect-Kameras}
+& 
 \\
 \hline
 
 ANF\_07 & Wiedererkennung von Personen in Reichweite der vorgesehenen Sensorik nach einer definierten Zeit & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 \begin{itemize}
-	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).,
-	\item[2.]	Launch-File starten (People2Pose).
-	\item[3.]	Widerholen der Schritte drei bis fünf aus ANF\_08.
-	\item[4.]	Abonnieren der Veröffentlichten \textit{ROS-Topic}. 
-	\item[5.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel.
-	\item[6.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Kamerakoordinatensystem.
-	\item[7.]	Neustart des Roboters und wiederausführung des Programms.
-	\item[8.]	Benutzer I und betritt das Sichtfeld und wird wiedererkannt.
-	\item[9.]	Messung der X- und Y-Komponente des Benutzers mit vorgeschriebenen Messmittel.
-	\item[10.]	Posenschätzung mit Messung vergleichen. Bezugspunkt ist das Kamerakoordinatensystem.
+	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
+\item[2.]	Ausführen (python finitestatemachine.py und python people2pose.py)
+\item[3.]   Registrierter Benutzer stellt sich in das Sichtfeld einer Kamera und wendet sich dieser zu (Hinweis: Status der Erkennung wird über die Lautsprecher ausgegeben)
+\item[4.]	Registrierter Benutzer verlässt das Sichtfeld
+\item[5.]   1 Monat warten
+\item[6.]	Registrierter Benutzer stellt sich in das Sichtfeld 
 	
 \end{itemize}
 
@@ -261,7 +261,7 @@ ANF\_07 & Wiedererkennung von Personen in Reichweite der vorgesehenen Sensorik n
 \newline
 
 \textbf{}%bestanden?
-& \textit{ROS}\newline
+& \newline
 Bandmaß\newline
 \textit{Kinect-Kameras}
 \\
@@ -270,15 +270,12 @@ Bandmaß\newline
 	\begin{itemize}
 		
 		
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (\textit{SLAM})
-		\item[3.]	Resetknopf betätigen
-		\item[4.]	Bewegungsvorgabe durch den Benutzer mithilfe des Joysticks oder einer Zielvorgabe in \textit{Rviz}.
-		\item[5.]	Am Joystick die Tasten \glqq left trigger\grqq{} und \glqq right trigger\grqq{} drücken
-		\item[6.]	Auswahl eines Referenzobjekts.
-		\item[7.]	Bestimmung der Maße des Referenzobjekts.
-		\item[8.]	Referenzobjekt in aufgenommener statischer Karte finden und Maße unter Einbeziehung des Kartenmaßstabs und der Auflösung bestimmen.
-		\item[9.]	Vergleich der in den vorherigen Schritten bestimmten Maße.
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
+	\item[2.]	Ausführen (python finitestatemachine.py und python people2pose.py)
+	\item[3.]	Registrierter Benutzer stellt sich in das Sichtfeld einer Kamera undwendet sich dieser nicht zu (Hinweis: Status der Erkennung wird über die Lautsprecher ausgegeben)
+	\item[4.]	Registrierter Benutzer wendet sich zur Kamera
+	\item[5.]   Zeiterfassung ab dem Zeitpunkt der Zuwendung bis zur Textausgabe \glqq ID x erkannt\grqq
+
 		
 		
 		
@@ -289,19 +286,17 @@ Bandmaß\newline
 	
 	\textbf{}%hier kommt bestanden oder so rein
 	
-	& \textit{Rviz \newline Joystick}\\
+	& \\
 	\hline
 	ANF\_09 & Registrierung von Personen in Reichweite der vorgesehenen Sensorik innerhalb einer vorgegebenen Zeit& Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		
 		
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (\textit{SLAM + Explore lite})
-		\item[3.]	Resetknopf drücken
-		\item[4.]	Auswahl eines Referenzobjekts.
-		\item[5.]	Bestimmung der Maße des Referenzobjekts.
-		\item[6.]	Referenzobjekt in aufgenommener statischer Karte finden und Maße unter Einbeziehung des Kartenmaßstabs und der Auflösung bestimmen.
-		\item[7.]	Vergleich der in den vorherigen Schritten bestimmten Maße.
+		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen).
+	\item[2.]	Ausführen (python finitestatemachine.py und python people2pose.py)
+	\item[3.]	Unregistrierter Benutzer stellt sich in das Sichtfeld einer Kamera und wendet sich dieser nicht zu 
+	\item[4.]	Unregistrierter Benutzer wendet sich zur Kamera (Hinweis: Status der Erkennung wird über die Lautsprecher ausgegeben)
+	\item[5.]   Zeiterfassung ab dem Zeitpunkt der Zuwendung bis zur Textausgabe \glqq Neue Person mit der ID x erkannt\grqq
 
 		
 	\end{itemize}
@@ -311,34 +306,10 @@ Bandmaß\newline
 	
 	\textbf{}%hier kommt bestanden oder so rein
 	
-	& \textit{Rviz \newline Joystick}\\
+	& \\
 
 	\hline
-	ANF\_10 & Positionsschätzung von erkannten Personen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
-	\begin{itemize}
-		
-		
-		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
-		\item[2.]	Launch-File starten (Lokalisierung)
-		\item[3.]	Bezugspunkt in der Umgebung festlegen
-		\item[4.]	Bezugspunkt in statischer Karte in \textit{Rviz} eintragen (z.B. als \textit{Simple Goal})
-		\item[5.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen
-		\item[6.]	Transformation zwischen Bezugspunkt und Posenschätzung bestimmen
-		\item[7.]	Messung mit vorgeschriebenen Messmittel
-		\item[8.]	Vergleich der Transformation mit dem gemessenen Werten
-		
-	\end{itemize}
-	
-	\underline{Ergebnis:}\newline
-	\newline
-	
-	\textbf{}%hier kommt bestanden rein
-	& \textit{Rviz}\newline
-	Bandmaß\newline
-	Kompass
-	\\
-	\hline
-	ANF\_11 & Kartographierung der Umgebung mit Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_10 & Kartographierung der Umgebung mit Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 		\begin{itemize}
 			
 			
@@ -356,7 +327,7 @@ Bandmaß\newline
 	\newline
 	
 	\textbf{}\textbf{}	%hier kommt bestanden oder so rein
-	& \textit{Rviz}\newline
+	& 
 	\textit{Joystick}\newline
 	\textit{Kinect-Kameras}
 	\\
@@ -364,7 +335,7 @@ Bandmaß\newline
 
 	\hline
 
-	ANF\_12& Kartographieren der Umgebung ohne Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_11& Kartographieren der Umgebung ohne Bewegungsvorgabe durch den Benutzer & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 			\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen
@@ -382,7 +353,7 @@ Bandmaß\newline
 	\textit{Kinect-Kameras}
 	\\
 	\hline
-	ANF\_13&Posenschätzung in vorhandener statischer Karte & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_12&Posenschätzung in vorhandener statischer Karte & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen
@@ -403,7 +374,7 @@ Bandmaß\newline
 	\textit{LiDar}
 	\\
 	\hline
-	ANF\_14& Anfahren einer vom Benutzer vorgegebenen Zielpose & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_13& Anfahren einer vom Benutzer vorgegebenen Zielpose & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 	\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 	\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
@@ -423,7 +394,7 @@ Bandmaß\newline
 \textit{Rviz}\newline
 	\\
 	\hline
-	ANF\_15& Autonomes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	ANF\_14& Autonomes Fahren durch enge Passagen & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
@@ -431,8 +402,8 @@ Bandmaß\newline
 		\item[4.]	Resetknopf betätigen.
 		\item[5.]	Manuell oder durch Sprachbefehl in den Modus \textit{Drive/Autonom/to target} wechseln
 		\item[6.]	\textit{Simple Goal} durch \textit{Rviz} im \textit{ROS}-Netzwerk veröffentlichen und sicherstellen das die berechnete Trajektorie durch eine enge Passage im Sinne der Anforderung führt
-		\item[7.]	Vollautomatisiertes durchführen der Fahraufgabe
-		\item[8.]	Aktuelle Posenschätzung aus dem \textit{ROS}-Netzwerk auslesen und mit dem veröffentlichten \textit{Simple Goal} vergleichen.
+		\item[7.]	Vollautomatisiertes Durchführen der Fahraufgabe
+
 	\end{itemize}
 	
 	\underline{Ergebnis:}\newline
@@ -440,7 +411,8 @@ Bandmaß\newline
 	\textbf{}%bestanden?
 	& \textit{ROS}\newline
 	\\
-		ANF\_16& Risikominimaler Zustand & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
+	\hline
+		ANF\_15& Risikominimaler Zustand & Zur Durchführung sind folgende Arbeitsschritte durchzuführen:
 	\begin{itemize}
 		\item[1.]	ALF einschalten (Rechner hochfahren und Wahlschlüsselschalter auf „Hand“-Modus stellen)
 		\item[2.]	Zustandsautomat durch \textit{python2 finitestatemachine.py} ausführen.
